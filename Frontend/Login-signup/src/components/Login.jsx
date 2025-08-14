@@ -10,9 +10,9 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/login', { email, password })
+        axios.post('http://localhost:3000/login', { email, password },{withCredentials:true})
         .then(result => {console.log(result)
-            if(result.data === "Success") {
+            if(result.data === "Login Successful") {
                 navigate("/home")
             } else if(result.data === "Incorrect Password") {
                 alert("Incorrect Password");
