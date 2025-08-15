@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-export default function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function Navbar({isLoggedIn}) {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/status", { credentials: "include" })
-      .then((response) => response.json())
-      .then((data) => {
-        setIsLoggedIn(data.loggedIn);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/status", { credentials: "include" })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setIsLoggedIn(data.loggedIn);
+  //     });
+  // }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
       <a className="navbar-brand" href="#">

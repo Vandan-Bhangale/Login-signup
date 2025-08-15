@@ -1,11 +1,13 @@
 const express = require('express');
+require('dotenv').config();
 const { default: mongoose } = require('mongoose');
 const cors = require ('cors');
 const session = require('express-session');
-const authRoutes = require("./routes/userRoute")
+const authRoutes = require("./routes/userRoute");
 
 const app = express();
 app.use(cors({origin: 'http://localhost:5173', credentials: true}));
+
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
@@ -15,9 +17,9 @@ app.use(session({
 
 app.use(express.json());
 
-app.use("/",authRoutes)
+app.use("/",authRoutes);
 
-const URL = "mongodb+srv://admin:admin@login.0w6cmxd.mongodb.net/Login?retryWrites=true&w=majority&appName=Login";
+const URL = process.env.MONGO_URI;
 
 const PORT = 3000;
 
@@ -27,4 +29,4 @@ mongoose.connect(URL).then(
     })
 ).catch((err) => {
     console.log("Error while connecting to database: ",err);
-})
+});
